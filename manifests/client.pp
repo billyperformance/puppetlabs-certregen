@@ -12,6 +12,8 @@ class certregen::client(
     ensure  => present,
     content => file($settings::cacert, $settings::localcacert, '/dev/null'),
     mode    => '0644',
+    owner   => 'puppet',
+    group   => 'puppet',
   }
 
   $pe_build = getvar('::pe_build')
@@ -23,6 +25,8 @@ class certregen::client(
       ensure  => present,
       content => file($settings::cacrl, $settings::hostcrl, '/dev/null'),
       mode    => '0644',
+      owner   => 'puppet',
+      group   => 'puppet',
     }
   }
 }
